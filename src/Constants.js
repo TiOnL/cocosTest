@@ -10,22 +10,39 @@ var Constants = {
     left:50,
     right:300
   }
-
-
 }
 
 Constants.monsters = {
   "test-monster":{
     sprites: ["test-monster.png"],
     hp:200,
-    maxSpeed: 60
+    maxSpeed: 40
   },
   "skull":{
-    sprites:["skull/s_000.png", "skull/s_007.png"],
+    sprites:["skull/s_000.png", "skull/s_001.png", "skull/s_002.png", "skull/s_003.png",
+  "skull/s_004.png","skull/s_005.png","skull/s_006.png","skull/s_007.png",
+"skull/s_008.png","skull/s_009.png","skull/s_010.png","skull/s_011.png"],
     hp:200,
-    maxSpeed: 60,
-    animationDelay:0.2,
+    maxSpeed: 40,
+    animationDelay:0.05,
+    scale:0.7
+  },
+  "zombie":{
+    sprites:["zombie/go_1.png","zombie/go_2.png","zombie/go_3.png","zombie/go_4.png",
+  "zombie/go_5.png","zombie/go_6.png","zombie/go_7.png",
+  "zombie/go_8.png","zombie/go_9.png","zombie/go_10.png"],
+    hp:200,
+    maxSpeed: 30,
+    animationDelay:0.1,
     scale:0.5
+  },
+  "vampire":{
+    sprites:["vampire/go_1.png","vampire/go_2.png","vampire/go_3.png","vampire/go_4.png",
+  "vampire/go_5.png","vampire/go_6.png","vampire/go_7.png", "vampire/go_8.png"],
+    hp:200,
+    maxSpeed: 40,
+    animationDelay:0.1,
+    scale:0.4
   }
 }
 

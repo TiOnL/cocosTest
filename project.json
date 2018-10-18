@@ -18,7 +18,8 @@
         "src/resource.js",
         "src/mainScene.js",
         "src/MonsterSpawner.js",
-        "src/Bullet.js"
+        "src/Bullet.js",
+        "src/EndGameScene.js"
 
     ]
 }

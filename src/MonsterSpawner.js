@@ -5,14 +5,15 @@ var MonsterSpawner = function(){
                     x: 0.95,
                     y: 0.5
                   },
-                  {type:"skull",
+                  {type:"vampire",
                   time: 1.8,
                   x: 0.95,
                   y: 0.9},
-                  {type:"skull",
+                  {type:"zombie",
                   time: 2.0,
                   x: 0.95,
-                  y: 0.3}  ];
+                  y: 0.3},
+                  ];
 
   spawnData.sort((a,b)=>{return a.time - b.time});
   //end initialization
