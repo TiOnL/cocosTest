@@ -28,13 +28,8 @@ var res = {
       grassSize: 128
     },
     background_png: "res/background.png",
-    HelloWorld_png : "res/HelloWorld.png",
+    error: "res/error.png"
 };
-
-var settings = {
-  screenSizeX: 640,
-  screenSizeY: 480
-}
 
 var g_resources = [];
 for (var i in res) {

@@ -12,9 +12,13 @@
     "modules" : ["cocos2d"],
 
     "jsList" : [
+        "src/Constants.js",
+        "src/Player.js",
         "src/Monster.js",
         "src/resource.js",
-        "src/mainScene.js"
+        "src/mainScene.js",
+        "src/MonsterSpawner.js",
+        "src/Bullet.js"
 
     ]
 }

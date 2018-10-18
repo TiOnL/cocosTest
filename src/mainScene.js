@@ -1,12 +1,13 @@
 
 var HelloWorldLayer = cc.Layer.extend({
     playerSprite:null,
-    objects:[],
-    monsters:[],
+    monsterSpawner:null,
     ctor:function () {
         this._super();
-
-        this.monsters.push(new Monster());
+        this.monsterSpawner = new MonsterSpawner();
+        this.monsterSpawner.onMonsterSpawn = (monster)=>{
+          this.addChild(monster);
+        }
 
 
 
@@ -14,25 +15,30 @@ var HelloWorldLayer = cc.Layer.extend({
         var backgroundSprite = new cc.Sprite(res.background_png);
         backgroundSprite.attr({
               x:size.width/2,
-              y:size.height/2
+              y:size.height/2,
+              scale:2.0
             });
         this.addChild(backgroundSprite, -10);
-        this.playerSprite = new cc.Sprite("res/player.png");
+        this.playerSprite = new Player();
         this.playerSprite.attr({
             x: size.width / 2,
             y: size.height / 2
         });
         this.addChild(this.playerSprite, 0);
         this.scheduleUpdate();
-        for (var m of this.monsters){
-          this.addChild(m, 0);
-        }
         return true;
     },
     update: function(dt){
-      console.log("init called "+ dt);
-      this.playerSprite.x-=dt*5;
-      if(this.playerSprite.x<=100)this.removeChild(this.playerSprite);
+      this.monsterSpawner.update(dt);
+      var allChildren = this.getChildren();
+      for (child of allChildren){
+
+        if(child instanceof Monster && child.x < Constants.gameOverLineX){
+          console.log("GameOver");
+        }
+
+      }
+
     }
 
 });
