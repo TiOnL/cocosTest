@@ -50,6 +50,11 @@ Constants.bullets = {
   "bullet":{
     sprite: "res/bullet.png",
     damage: 10,
-    speed:900
+    speed:2000
+  },
+  "bullet-bat":{
+    sprite: "res/bullet-bat.png",
+    damage: 30,
+    speed:700
   }
 }

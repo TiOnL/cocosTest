@@ -23,10 +23,7 @@
  ****************************************************************************/
 
 var res = {
-    textures:{
-      grass: "res/textures/grass.png",
-      grassSize: 128
-    },
+    playerSprites:["res/player.png", "res/player1.png"],
     background_png: "res/background.png",
     error: "res/error.png"
 };

@@ -9,6 +9,17 @@ var Player = cc.Sprite.extend({
   timeToShoot:0,
   ctor:function () {
     this._super("res/player.png");
+    var animFrames = [];
+    for(var fname of res.playerSprites){
+      var texture = cc.textureCache.addImage(fname);
+      var spriteFrame = cc.SpriteFrame.create(texture,cc.rect(0,0,texture.width,texture.height));
+      var animFrame = new cc.AnimationFrame(spriteFrame, 1, null);
+      animFrames.push(animFrame);
+    }
+    var animation = new cc.Animation(animFrames, 0.07, 1);
+    var animateAction = cc.Animate.create(animation);
+    this.runAction(animateAction.repeatForever());
+
     this.x = 200;
     this.y = 200;
     this.maxSpeed = Constants.playerMaxSpeed;
@@ -53,7 +64,7 @@ var Player = cc.Sprite.extend({
       var bullet = new Bullet("bullet");
       bullet.x = this.x +50;
       bullet.y = this.y +Math.random()*20-10;
-      this.getParent().addChild(bullet);  
+      this.getParent().addChild(bullet);
     }
   }
 

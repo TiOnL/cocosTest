@@ -15,7 +15,7 @@ var  MainScene = (function(){
       backgroundSprite.attr({
         x:size.width/2,
         y:size.height/2,
-        scale:2.0
+        scale:1.0
       });
       this.addChild(backgroundSprite, -10);
       this.playerSprite = new Player();
