@@ -19,7 +19,9 @@
         "src/mainScene.js",
         "src/MonsterSpawner.js",
         "src/Bullet.js",
-        "src/EndGameScene.js"
+        "src/EndGameScene.js",
+        "src/objects/ImpassableGround.js",
+        "src/objects/Grenade.js"
 
     ]
 }

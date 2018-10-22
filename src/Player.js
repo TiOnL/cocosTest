@@ -48,8 +48,12 @@ var Player = cc.Sprite.extend({
       this.speedX *= (this.maxSpeed/absoluteSpeed);
       this.speedY *= (this.maxSpeed/absoluteSpeed);
     }
-    this.x += this.speedX*dt;
-    this.y += this.speedY*dt;
+    var newX = this.x + this.speedX*dt;
+    var newY = this.y + this.speedY*dt;
+    if (this.canMoveXY(newX, newY)){
+      this.x = newX;
+      this.y = newY;
+    }
     if (this.x < Constants.playerArea.left)this.x = Constants.playerArea.left;
     if (this.x > Constants.playerArea.right)this.x = Constants.playerArea.right;
     if (this.y < Constants.playerArea.bottom)this.y = Constants.playerArea.bottom;
@@ -66,6 +70,14 @@ var Player = cc.Sprite.extend({
       bullet.y = this.y +Math.random()*20-10;
       this.getParent().addChild(bullet);
     }
+  },
+  canMoveXY(x,y){
+    var allChildren = this.parent.getChildren();
+    for( var elem of allChildren){
+      if(! (elem instanceof ImpassableGround)) continue;
+      if(Math.hypot(x-elem.x, y-elem.y) < elem.radius) return false;
+    }
+    return true;
   }
 
 });

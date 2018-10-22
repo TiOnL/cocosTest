@@ -25,10 +25,12 @@
 var res = {
     playerSprites:["res/player.png", "res/player1.png"],
     background_png: "res/background.png",
-    error: "res/error.png"
+    error: "res/error.png",
+    grenade:"res/bomb.png"
 };
 
 var g_resources = [];
-for (var i in res) {
-    g_resources.push(res[i]);
-}
+
+// for (var i in res) {
+//     g_resources.push(res[i]);
+// }

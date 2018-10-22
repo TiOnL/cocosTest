@@ -58,3 +58,13 @@ Constants.bullets = {
     speed:700
   }
 }
+
+Constants.impassableGround = {
+  sprites:[],
+  baseRadius:70,
+  yAnchorPoint:0.35
+
+}
+for(i=1; i<=13; i++){
+  Constants.impassableGround.sprites.push("res/fire/fire1_ "+String(i).padStart(2,"0")+".png");
+}

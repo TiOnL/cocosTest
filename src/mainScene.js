@@ -25,6 +25,15 @@ var  MainScene = (function(){
       });
       this.addChild(this.playerSprite, 0);
       this.scheduleUpdate();
+
+      //test
+      var impg = new Grenade(200, 600);
+      impg.x = 900;
+      impg.y = 600;
+      impg.speedY = 40;
+      this.addChild(impg,1);
+
+
       return true;
     },
     update: function(dt){
