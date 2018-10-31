@@ -25,7 +25,9 @@ Constants.monsters = {
     hp:200,
     maxSpeed: 40,
     animationDelay:0.05,
-    scale:0.7
+    scale:0.7,
+    attackCount:2,
+    attackDelay:5
   },
   "zombie":{
     sprites:["zombie/go_1.png","zombie/go_2.png","zombie/go_3.png","zombie/go_4.png",

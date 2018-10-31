@@ -1,6 +1,9 @@
 var Monster = cc.Sprite.extend({
   hp:100,
   maxSpeed:1,
+  attackCount:0,
+  attackDelay:1,
+  timeToNextAttak:0,
     ctor:function (monsterType) {
       var monsterInfo = Constants.monsters[monsterType]
       if(monsterInfo){
@@ -8,6 +11,9 @@ var Monster = cc.Sprite.extend({
         var scale = monsterInfo.scale ||1.0;
         this.setScale(scale, scale);
         var animationDelay = monsterInfo.animationDelay || 0.5;
+        this.attackCount = monsterInfo.attackCount || 0;
+        this.attackDelay = monsterInfo.attackDelay || 1.0;
+        this.timeToNextAttak = this.attackDelay;
         var animFrames = [];
         for(var fname of monsterInfo.sprites){
           var spriteFrame = cc.spriteFrameCache.getSpriteFrame(monsterType + "/" + fname);
@@ -31,9 +37,16 @@ var Monster = cc.Sprite.extend({
   },
   update(dt){
     this.checkCollisionsWithBullets();
-    this.x -=dt*this.maxSpeed;
     if(this.hp<=0){
       this.removeFromParent();
+      return;
+    }
+    this.x -=dt*this.maxSpeed;
+    if(this.attackCount >0){
+      this.timeToNextAttak -=dt;
+      if (this.timeToNextAttak<=0){
+        this.attack();
+      }
     }
   },
   checkCollisionsWithBullets(){
@@ -47,6 +60,21 @@ var Monster = cc.Sprite.extend({
         bullet.removeFromParent();
       }
     }
+  },
+
+  attack(){
+    this.attackCount --;
+    this.timeToNextAttak = this.attackDelay;
+    var attackX = Math.random()*(Constants.playerArea.right - Constants.playerArea.left)
+        + Constants.playerArea.left;
+    var attackY = Math.random()*(Constants.playerArea.top - Constants.playerArea.bottom)
+            + Constants.playerArea.bottom;
+    var grenade = new Grenade(attackX, attackY);
+    grenade.x = this.x;
+    grenade.y = this.y;
+    grenade.speedY = 3000;
+    this.getParent().addChild(grenade,1);
+
   }
 
 

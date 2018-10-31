@@ -27,11 +27,7 @@ var  MainScene = (function(){
       this.scheduleUpdate();
 
       //test
-      var impg = new Grenade(200, 200);
-      impg.x = 900;
-      impg.y = 200;
-      impg.speedY = 3000;
-      this.addChild(impg,1);
+
 
 
       return true;
