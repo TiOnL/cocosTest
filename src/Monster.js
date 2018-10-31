@@ -72,7 +72,7 @@ var Monster = cc.Sprite.extend({
     var grenade = new Grenade(attackX, attackY);
     grenade.x = this.x;
     grenade.y = this.y;
-    grenade.speedY = 3000;
+    grenade.speedY = 1000;
     this.getParent().addChild(grenade,1);
 
   }

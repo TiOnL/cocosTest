@@ -16,9 +16,9 @@
         "src/Player.js",
         "src/Monster.js",
         "src/resource.js",
-        "src/mainScene.js",
+        "src/MainScene.js",
         "src/MonsterSpawner.js",
-        "src/Bullet.js",
+        "src/objects/Bullet.js",
         "src/EndGameScene.js",
         "src/objects/ImpassableGround.js",
         "src/objects/Grenade.js"

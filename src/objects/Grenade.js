@@ -6,7 +6,7 @@ var Grenade = cc.Sprite.extend({
   ctor:function (targetX, targetY) {
     this.targetX = targetX;
     this.targetY = targetY;
-    this.speedX = -1300;
+    this.speedX = -800;
     this._super(res.grenade);
     this.setScale(0.2);
     this.scheduleUpdate();
@@ -23,7 +23,7 @@ var Grenade = cc.Sprite.extend({
       this.speedY += accelY*dt;
       this.x += this.speedX*dt;
       this.y += this.speedY*dt;
-      this.remainingTime -=dt;  
+      this.remainingTime -=dt;
     }
   },
   blow(){
