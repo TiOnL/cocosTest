@@ -46,7 +46,7 @@ var  MainScene = (function(){
       //check game loose
       for (child of allChildren){
         if(child instanceof Monster && child.x < Constants.gameOverLineX){
-          // this.unscheduleUpdate();
+          this.unscheduleUpdate();
           // this.cleanup();
           // cc.director.pause();
           this.changeScene();
@@ -61,6 +61,7 @@ var  MainScene = (function(){
         for (child of allChildren){
           child.unscheduleUpdate();
         }
+      cc.eventManager.removeAllListeners();
       var transition = new cc.TransitionCrossFade(3.0, new EndGameScene());
       cc.director.runScene(transition);
     }

@@ -22,7 +22,8 @@
         "src/EndGameScene.js",
         "src/objects/ImpassableGround.js",
         "src/objects/Grenade.js",
-        "src/GameData.js"
+        "src/GameData.js",
+        "src/StartScene.js"
 
     ]
 }

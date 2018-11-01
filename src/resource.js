@@ -26,7 +26,9 @@ var res = {
     playerSprites:["res/player.png", "res/player1.png"],
     background_png: "res/background.png",
     error: "res/error.png",
-    grenade:"res/bomb.png"
+    grenade:"res/bomb.png",
+    startSceneImage:"res/startScreen.png",
+    endSceneImage:"res/endScreen.png"
 };
 
 var g_resources = [];

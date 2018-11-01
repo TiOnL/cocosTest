@@ -108,7 +108,7 @@ cc.game.onStart = function(){
 
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        cc.director.runScene(new MainScene());
+        cc.director.runScene(new StartScene());
         gameCanvas.focus();
     }, this);
 };
