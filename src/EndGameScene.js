@@ -5,9 +5,6 @@ var  EndGameScene = (function(){
     monsterSpawner:null,
     ctor:function () {
       this._super();
-      var fontDef = new cc.FontDefinition();
-      fontDef.fontName = "Arial";
-      fontDef.fontSize = "32";
       var myLabel =  cc.LabelTTF.create("Game Ended","Arial","32",cc.TEXT_ALIGNMENT_CENTER);
       myLabel.x = Constants.screenSizeX/2;
       myLabel.y = Constants.screenSizeY/2;

@@ -3,13 +3,21 @@ var  MainScene = (function(){
   var HelloWorldLayer = cc.Layer.extend({
     playerSprite:null,
     monsterSpawner:null,
+    scoreLabel:null,
     ctor:function () {
       this._super();
       this.monsterSpawner = new MonsterSpawner();
       this.monsterSpawner.onMonsterSpawn = (monster)=>{
+        monster.onDie = (m)=>{
+          GameData.playerScore += 100;
+          this.scoreLabel.setString("Score: " + GameData.playerScore);
+        }
         this.addChild(monster);
       }
-
+      this.scoreLabel =  cc.LabelTTF.create("Score: 0","Arial","32",cc.TEXT_ALIGNMENT_LEFT);
+      this.scoreLabel.x = Constants.screenSizeX * 0.9;
+      this.scoreLabel.y = Constants.screenSizeY * 0.95;
+      this.addChild(this.scoreLabel);
       var size = cc.winSize;
       var backgroundSprite = new cc.Sprite(res.background_png);
       backgroundSprite.attr({
@@ -25,7 +33,7 @@ var  MainScene = (function(){
       });
       this.addChild(this.playerSprite, 0);
       this.scheduleUpdate();
-
+      GameData.playerScore = 0;
       //test
 
 

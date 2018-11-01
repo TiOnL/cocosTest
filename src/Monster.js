@@ -4,6 +4,7 @@ var Monster = cc.Sprite.extend({
   attackCount:0,
   attackDelay:1,
   timeToNextAttak:0,
+  onDie:null,
     ctor:function (monsterType) {
       var monsterInfo = Constants.monsters[monsterType]
       if(monsterInfo){
@@ -38,6 +39,9 @@ var Monster = cc.Sprite.extend({
   update(dt){
     this.checkCollisionsWithBullets();
     if(this.hp<=0){
+      if(this.onDie){
+        this.onDie(this);
+      }
       this.removeFromParent();
       return;
     }
