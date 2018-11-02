@@ -9,7 +9,12 @@ var  MainScene = (function(){
       this.monsterSpawner = new MonsterSpawner();
       this.monsterSpawner.onMonsterSpawn = (monster)=>{
         monster.onDie = (m)=>{
-          GameData.playerScore += 100;
+          if(m.isBoss){
+            GameData.playerScore += 500;
+            this.playerSprite.setSpecialBullets("bullet-bat", 3.0);
+          }else{
+            GameData.playerScore += 100;
+          }
           this.scoreLabel.setString("Score: " + GameData.playerScore);
         }
         this.addChild(monster);

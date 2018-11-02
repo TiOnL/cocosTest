@@ -5,6 +5,7 @@ var Monster = cc.Sprite.extend({
   attackDelay:1,
   timeToNextAttak:0,
   onDie:null,
+  isBoss:false,
     ctor:function (monsterType) {
       var monsterInfo = Constants.monsters[monsterType]
       if(monsterInfo){
@@ -31,6 +32,7 @@ var Monster = cc.Sprite.extend({
         this.runAction(animateAction.repeatForever());
         this.hp = monsterInfo.hp;
         this.maxSpeed = monsterInfo.maxSpeed;
+        this.isBoss = monsterInfo.isBoss || false;
       }else{
         this._super(res.error);
       }

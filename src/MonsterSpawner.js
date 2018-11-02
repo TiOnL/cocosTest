@@ -1,12 +1,8 @@
 
 var MonsterSpawner = function(){
-  var spawnData = [{type:"test-monster",
-                    time: 0.2,
-                    x: 0.85,
-                    y: 0.5
-                  },
+  var spawnData = [
                   {type:"vampire",
-                  time: 1.8,
+                  time: 0.5,
                   x: 0.85,
                   y: 0.8},
                   {type:"zombie",
@@ -17,7 +13,7 @@ var MonsterSpawner = function(){
                   time: 3.0,
                   x: 0.85,
                   y: 0.5},
-                  {type:"skull",
+                  {type:"skeleton",
                   time: 6,
                   x: 0.85,
                   y: 0.8},

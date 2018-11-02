@@ -7,6 +7,8 @@ var Player = cc.Sprite.extend({
   onCreateObject:null,
   shootDelay:0.1,
   timeToShoot:0,
+  bulletType:"bullet",
+  bulletTypeRemainingTime:0,
   ctor:function () {
     this._super("res/player.png");
     var animFrames = [];
@@ -58,6 +60,7 @@ var Player = cc.Sprite.extend({
     if (this.x > Constants.playerArea.right)this.x = Constants.playerArea.right;
     if (this.y < Constants.playerArea.bottom)this.y = Constants.playerArea.bottom;
     if (this.y > Constants.playerArea.top)this.y = Constants.playerArea.top;
+    this.manageBulletType(dt);
     this.shoot(dt);
 
   },
@@ -65,7 +68,7 @@ var Player = cc.Sprite.extend({
     this.timeToShoot -=dt;
     while(this.timeToShoot <=0){
       this.timeToShoot +=this.shootDelay;
-      var bullet = new Bullet("bullet");
+      var bullet = new Bullet(this.bulletType);
       bullet.x = this.x +50;
       bullet.y = this.y +Math.random()*20-10;
       this.getParent().addChild(bullet);
@@ -78,6 +81,18 @@ var Player = cc.Sprite.extend({
       if(Math.hypot(x-elem.x, y-elem.y) < elem.radius) return false;
     }
     return true;
+  },
+  setSpecialBullets(bulletType, time){
+    this.bulletType = bulletType;
+    this.bulletTypeRemainingTime = time || 1.0;
+  },
+  manageBulletType(dt){
+    if (this.bulletType != "bullet"){
+      this.bulletTypeRemainingTime-=dt;
+      if(this.bulletTypeRemainingTime<=0){
+        this.bulletType = "bullet";
+      }
+    }
   }
 
 });

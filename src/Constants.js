@@ -45,6 +45,15 @@ Constants.monsters = {
     maxSpeed: 40,
     animationDelay:0.1,
     scale:0.4
+  },
+  "skeleton":{
+    sprites:["skeleton/go_1.png","skeleton/go_2.png","skeleton/go_3.png","skeleton/go_4.png",
+  "skeleton/go_5.png","skeleton/go_6.png","skeleton/go_7.png", "skeleton/go_8.png"],
+    hp:1000,
+    maxSpeed: 15,
+    animationDelay:0.1,
+    scale:0.8,
+    isBoss:true
   }
 }
 
@@ -56,8 +65,8 @@ Constants.bullets = {
   },
   "bullet-bat":{
     sprite: "res/bullet-bat.png",
-    damage: 30,
-    speed:700
+    damage: 100,
+    speed:600
   }
 }
 
