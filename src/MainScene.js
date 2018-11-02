@@ -6,7 +6,7 @@ var  MainScene = (function(){
     scoreLabel:null,
     ctor:function () {
       this._super();
-      this.monsterSpawner = new MonsterSpawner();
+      this.monsterSpawner = new MonsterSpawner(monsterSpawnScenario, true);
       this.monsterSpawner.onMonsterSpawn = (monster)=>{
         monster.onDie = (m)=>{
           if(m.isBoss){
