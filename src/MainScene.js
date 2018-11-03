@@ -11,7 +11,7 @@ var  MainScene = (function(){
         monster.onDie = (m)=>{
           if(m.isBoss){
             GameData.playerScore += 500;
-            this.playerSprite.setSpecialBullets("bullet-bat", 3.0);
+            this.playerSprite.setSpecialBullets("bullet-bat", 4.0);
           }else{
             GameData.playerScore += 100;
           }

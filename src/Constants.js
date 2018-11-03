@@ -58,8 +58,8 @@ Constants.monsters = {
     "res/monsters/skeleton/go_3.png","res/monsters/skeleton/go_4.png",
     "res/monsters/skeleton/go_5.png","res/monsters/skeleton/go_6.png",
     "res/monsters/skeleton/go_7.png", "res/monsters/skeleton/go_8.png"],
-    hp:1000,
-    maxSpeed: 15,
+    hp:1200,
+    maxSpeed: 20,
     animationDelay:0.1,
     scale:0.8,
     isBoss:true
