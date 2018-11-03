@@ -9,7 +9,7 @@ var Monster = cc.Sprite.extend({
     ctor:function (monsterType) {
       var monsterInfo = Constants.monsters[monsterType]
       if(monsterInfo){
-        this._super("res/monsters/" +monsterInfo.sprites[0]);
+        this._super(monsterInfo.sprites[0]);
         var scale = monsterInfo.scale ||1.0;
         this.setScale(scale, scale);
         var animationDelay = monsterInfo.animationDelay || 0.5;
@@ -20,7 +20,7 @@ var Monster = cc.Sprite.extend({
         for(var fname of monsterInfo.sprites){
           var spriteFrame = cc.spriteFrameCache.getSpriteFrame(monsterType + "/" + fname);
           if(!spriteFrame){
-            var texture = cc.textureCache.addImage("res/monsters/" +fname);
+            var texture = cc.textureCache.addImage(fname);
             var spriteFrame = cc.SpriteFrame.create(texture,cc.rect(0,0,texture.width,texture.height));
             cc.spriteFrameCache.addSpriteFrame(spriteFrame, monsterType + "/" + fname);
           }

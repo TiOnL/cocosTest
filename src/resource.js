@@ -31,8 +31,20 @@ var res = {
     endSceneImage:"res/endScreen.png"
 };
 
-var g_resources = [];
-
-// for (var i in res) {
-//     g_resources.push(res[i]);
-// }
+function findStrings(object){
+  var strings = [];
+  if(typeof object == "string"){
+    strings.push(object);
+    return strings;
+  }
+  if(Array.isArray(object)){
+    for(var elem of object){
+      strings = strings.concat(findStrings(elem));
+    }
+  } else if(typeof object == "object"){
+    for(var key in object){
+      strings = strings.concat(findStrings(object[key]));
+    }
+  }
+  return strings;
+}

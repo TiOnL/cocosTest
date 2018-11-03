@@ -107,6 +107,7 @@ cc.game.onStart = function(){
     cc.view.resizeWithBrowserSize(true);
 
     //load resources
+    var g_resources = findStrings([res,Constants]);
     cc.LoaderScene.preload(g_resources, function () {
         cc.director.runScene(new StartScene());
         gameCanvas.focus();
