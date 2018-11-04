@@ -9,6 +9,8 @@ var Player = cc.Sprite.extend({
   timeToShoot:0,
   bulletType:"bullet",
   bulletTypeRemainingTime:0,
+  touchMoveDx:0,
+  touchMoveDy:0,
   ctor:function () {
     this._super("res/player.png");
     var animFrames = [];
@@ -36,6 +38,22 @@ var Player = cc.Sprite.extend({
     	    },
         }, this);
 
+        cc.eventManager.addListener({
+              event: cc.EventListener.TOUCH_ONE_BY_ONE,
+              onTouchBegan: (selTouch, event) =>{
+                  console.log("touch");
+                  return true;
+              },
+              onTouchMoved: (selTouch, event) =>{
+                var delta = selTouch.getDelta();
+                this.touchMoveDx += delta.x;
+                this.touchMoveDy += delta.y;
+              },
+              onTouchEnded: (selTouch, event) =>{
+              //  this.y +=10;
+                console.log("touch ended", selTouch);
+              }
+            }, this);
   },
   update(dt){
     if (this.keysDown.has(cc.KEY.up)) this.speedY += dt*Constants.playerAcceleration;
@@ -44,6 +62,13 @@ var Player = cc.Sprite.extend({
     if (this.keysDown.has(cc.KEY.right)) this.speedX += dt*Constants.playerAcceleration;
     if (!this.keysDown.has(cc.KEY.up) && ! this.keysDown.has(cc.KEY.down))this.speedY *=0.8;
     if (!this.keysDown.has(cc.KEY.left) && !this.keysDown.has(cc.KEY.right))this.speedX *=0.8;
+
+    if(this.touchMoveDx != 0 || this.touchMoveDy != 0){
+      this.speedX = this.touchMoveDx / dt;
+      this.speedY = this.touchMoveDy / dt;
+      this.touchMoveDx = 0;
+      this.touchMoveDy = 0;
+    }
 
     var absoluteSpeed = Math.hypot(this.speedX, this.speedY);
     if(absoluteSpeed > this.maxSpeed){

@@ -19,6 +19,13 @@ var  StartScene = (function(){
               }
             }
           }, this);
+      cc.eventManager.addListener({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            onTouchBegan: (keyCode, event) =>{
+                cc.eventManager.removeAllListeners();
+                cc.director.runScene(new MainScene());
+            }
+          }, this);
 
       return true;
     }
